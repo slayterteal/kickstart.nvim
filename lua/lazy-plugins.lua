@@ -74,7 +74,6 @@ function lazy_load()
     { -- Fuzzy Finder (files, lsp, etc)
       'nvim-telescope/telescope.nvim',
       event = 'VimEnter',
-      branch = '0.1.x',
       dependencies = {
         'nvim-lua/plenary.nvim',
         { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -304,7 +303,7 @@ function lazy_load()
 
         -- See full Code Diagnostic Text
         --  Useful for if they float off screen
-        vim.keymap.set('n', '<leader>gh', '<cmd>lua vim.diagnostic.open_float() <CR>', { desc = 'Focuses Code Diagnostics' })
+        vim.keymap.set('n', 'gh', ":lua vim.lsp.buf.hover({ border = \"rounded\"})<CR>", { desc = 'Focuses Code Diagnostics' })
 
         -- LSP servers and clients are able to communicate to each other what features they support.
         --  By default, Neovim doesn't support everything that is in the LSP specification.
