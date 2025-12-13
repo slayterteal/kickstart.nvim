@@ -19,6 +19,7 @@ return {
         replace_netrw = true,
         trash = true, -- use system trash.
         open_on_start = false,
+        hidden = true,
       },
       indent = { enabled = true },
       input = { enabled = true },
@@ -26,7 +27,10 @@ return {
         enabled = true,
         timeout = 3000,
       },
-      picker = { enabled = true },
+      picker = {
+        enabled = true,
+        hidden = true,
+      },
       quickfile = { enabled = true },
       scope = { enabled = true },
       scroll = { enabled = true },
