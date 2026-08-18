@@ -3,20 +3,8 @@ local map = function(keys, func, desc, event)
   vim.keymap.set('n', keys, func, { buffer = event.buf, desc = desc })
 end
 
--- install lazy.nvim if needed
-function lazy_install_if_needed() 
-  -- [[ Install `lazy.nvim` plugin manager ]]
-  --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
-  local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-  if not vim.uv.fs_stat(lazypath) then
-    local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-    local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-    if vim.v.shell_error ~= 0 then
-      error('Error cloning lazy.nvim:\n' .. out)
-    end
-  end ---@diagnostic disable-next-line: undefined-field
-  vim.opt.rtp:prepend(lazypath)
-end
+require('lazy-nvim-install')
+lazy_install_if_needed()
 
 -- lazy load all the plugins
 function lazy_load()
@@ -824,7 +812,7 @@ function lazy_load()
             map('<leader>oo', "<cmd>Outline!<CR>", '[O]pen [O]utline', event)
           end,
         })
-        require("outline").setup {
+        require("lua.plugins.colorscheme").setup {
           -- Your setup opts here (leave empty to use defaults)
         }
       end,
