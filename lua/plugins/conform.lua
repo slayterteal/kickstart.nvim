@@ -2,9 +2,18 @@ return {
   {
     'stevearc/conform.nvim',
     opts = {
-      format_on_save = {
-        timeout_ms = 3000,
-        lsp_fallback = true,
+      event = { 'BufWritePre' }, -- lazy-load, but not for autoformatting
+      cmd = { 'ConformInfo' },
+      keys = {
+        -- Add a command to handle formatting
+        {
+          '<leader>F',
+          function()
+            require('conform').format { async = true, lsp_format = 'fallback' }
+          end,
+          mode = '',
+          desc = 'Format buffer',
+        },
       },
       formatters_by_ft = {
         lua = { 'stylua' },

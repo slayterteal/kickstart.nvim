@@ -127,10 +127,11 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Open a new terminal in split screen
-vim.keymap.set('n', '<leader>`', ':split|resize -8|terminal<CR>', { desc = 'Open a terminal in split window' })
+-- NOTE: Snacks.nvim currently handles terminal opening so we don't use vim's built-in terminal.
+-- vim.keymap.set('n', '<leader>`', ':split|resize -8|terminal<CR>', { desc = 'Open a terminal in split window' })
 
 -- Open Diagnostic Window
-vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Open Floating Diagnostic Window' } )
+vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = 'Open Floating Diagnostic Window' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
