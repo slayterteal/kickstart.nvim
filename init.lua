@@ -6,5 +6,5 @@ if vim.g.vscode then
 else
   -- Run the plugin setup.
   -- require 'cli-init'
-  require 'lua.cli-univ'
+  require 'cli-univ'
 end
