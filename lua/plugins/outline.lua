@@ -1,5 +1,3 @@
-local util = require 'util.util'
-
 -- https://github.com/hedyhli/outline.nvim
 return {
   {

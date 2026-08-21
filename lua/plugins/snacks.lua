@@ -1,16 +1,21 @@
 
-function load_terminal()
+local function load_terminal()
   local shell
+    shell = ""
   if vim.fn.has("win32") == 1 then
     shell = "C:/Program Files/Git/bin/bash.exe" -- adjust to your git-bash path
-  else
-    shell = "bash"
   end
 
-  Snacks.terminal(nil, {
-    shell = shell,
-    win = { position = "bottom", height = 0.3 },
-  })
+  if( shell == "" ) then
+    -- If the string is empty call terminal() with
+    -- no arguments
+    Snacks.terminal()
+  else
+    Snacks.terminal(nil, {
+      shell = shell,
+      win = { position = "bottom", height = 0.3 },
+    })
+  end
 end
 
 return {

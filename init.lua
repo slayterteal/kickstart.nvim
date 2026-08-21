@@ -5,6 +5,5 @@ if vim.g.vscode then
   print 'VSCode Neovim Configuration Loaded!'
 else
   -- Run the plugin setup.
-  -- require 'cli-init'
   require 'cli-univ'
 end
