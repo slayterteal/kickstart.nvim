@@ -1,11 +1,10 @@
-
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "main",
+  lazy = false,
   build = ":TSUpdate",
-  opts = {
-    highlight = { enable = true },
-    indent = { enable = true },
-    ensure_installed = {
+  config = function()
+    local parsers = {
       "lua",
       "vim",
       "vimdoc",
@@ -13,43 +12,20 @@ return {
       "javascript",
       "typescript",
       "tsx",
-      "go"
-      -- add languages you need
-    },
-  },
-  highlight = {
-    enable = true,
-    -- disable = { "html" }, -- examples if a parser is unstable
-    additional_vim_regex_highlighting = false,
-  },
+      "go",
+    }
 
-  indent = {
-    enable = true,
-  },
+    -- installs parsers (async; safe to call every startup, it's a no-op if already installed)
+    require("nvim-treesitter").install(parsers)
 
-  -- optional playground (useful for debugging)
-  playground = {
-    enable = false,         -- set true if you want the playground UI
-    updatetime = 25,
-  },
-
-  matchup = {
-    enable = true, -- if you use romainl's vim-matchup
-  },
-
-  -- incremental selection (optional)
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-
-  -- optional: friendly message after install (not required)
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
+    -- highlighting + indent are now enabled per-filetype via autocmd,
+    -- not a global setup() table
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = parsers,
+      callback = function()
+        vim.treesitter.start()
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end,
+    })
   end,
 }

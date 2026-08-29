@@ -7,12 +7,12 @@ return {
       keys = {
         -- Add a command to handle formatting
         {
-          '<leader>F',
+          '<leader>cf',
           function()
             require('conform').format { async = true, lsp_format = 'fallback' }
           end,
           mode = '',
-          desc = 'Format buffer',
+          desc = 'Format buffer [Conform]',
         },
       },
       formatters_by_ft = {
