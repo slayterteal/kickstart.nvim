@@ -13,6 +13,8 @@ return {
       "typescript",
       "tsx",
       "go",
+      "rust",
+      "c"
     }
 
     -- installs parsers (async; safe to call every startup, it's a no-op if already installed)
