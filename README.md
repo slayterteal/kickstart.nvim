@@ -29,3 +29,5 @@ I've commited the grave sin of attempting to use this with Windows, linux, and M
   - [install](https://github.com/jesseduffield/lazygit/releases)
     - LazyGit is purely a Unix/Mac program
   - `choco install lazygit`
+- Treesitter CLI
+    - `brew install tree-sitter-cli`
