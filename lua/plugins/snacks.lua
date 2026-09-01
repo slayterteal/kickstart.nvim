@@ -85,6 +85,7 @@ return {
       { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
       { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
       -- git issues
+      --  I do not use Git Issues but will leave this here for documentation purposes.
       -- { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues (open)" },
       -- { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
       -- { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
@@ -161,7 +162,7 @@ return {
               dd(...)
             end
           else
-            vim.print = _G.dd 
+            vim.print = _G.dd
           end
 
           -- Create some toggle mappings
